@@ -126,7 +126,12 @@ class _AddLimePickleState extends State<AddLimePickle> {
                           icon: const Icon(Icons.camera_alt_outlined)),
                     ],
                   ),
-                  TextButton(
+                      const  SizedBox(height: 15),
+                    ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      minimumSize: const Size(140, 45)
+                    ),
                       onPressed: () {
                         db.addLimePickle(name.text, int.parse(exp.text), available.text,
                         access.imageUrl,about.text,phone.text);

@@ -124,7 +124,12 @@ class _AddTurmericState extends State<AddTurmeric> {
                           icon: const Icon(Icons.camera_alt_outlined)),
                     ],
                   ),
-                  TextButton(
+                     const  SizedBox(height: 15),
+                    ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      minimumSize: const Size(140, 45)
+                    ),
                       onPressed: () {
                         db.addTurmeric(
                             name.text,
