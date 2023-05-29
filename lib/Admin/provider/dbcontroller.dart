@@ -121,7 +121,7 @@ class ServiceController extends ChangeNotifier {
 
   void addAshaworker(String name, int exp, String availability, String about,
       String phone, String profimg) async {
-    await collectionRefDoctor.add({
+    await collectionRefAshaworker.add({
       'name': name,
       'exp': exp,
       'availability': availability,
@@ -172,7 +172,7 @@ class ServiceController extends ChangeNotifier {
     });
   }
 
-  // collection Referance of Nurse
+  // collection Referance of housekeepers
 
   CollectionReference collectionRefHouseKeepers = FirebaseFirestore.instance
       .collection('services')
@@ -183,7 +183,7 @@ class ServiceController extends ChangeNotifier {
 
   void addHouseKeepers(String name, int exp, String availability, String about,
       String phone, String profimg) async {
-    await collectionRefNurse.add({
+    await collectionRefHouseKeepers.add({
       'name': name,
       'exp': exp,
       'availability': availability,
@@ -457,7 +457,7 @@ class ServiceController extends ChangeNotifier {
 
   void addCoconut(String name, int exp, String availability, String about,
       String phone, String profimg) async {
-    await collectionRefClimbers.add({
+    await collectionRefCoconut.add({
       'name': name,
       'exp': exp,
       'availability': availability,
@@ -535,7 +535,7 @@ class ServiceController extends ChangeNotifier {
   CollectionReference collectionRefGooseBerry = FirebaseFirestore.instance
       .collection('products')
       .doc('pickle')
-      .collection('sellers');
+      .collection('gooseberry');
 
   //add data of GooseBerry
 
@@ -593,14 +593,14 @@ class ServiceController extends ChangeNotifier {
     });
   }
 
-  // collection Referance of Mushi
+  // collection Referance of Catla
 
   CollectionReference collectionRefCatla = FirebaseFirestore.instance
       .collection('products')
       .doc('fish')
       .collection('catla');
 
-  //add data of Mushi
+  //add data of CAtla
 
   void addCatla(String name, int exp, String availability, String about,
       String phone, String profimg) async {
@@ -621,7 +621,7 @@ class ServiceController extends ChangeNotifier {
       .doc('fish')
       .collection('rohu');
 
-  //add data of Mushi
+  //add data of Rohu
 
   void addRohu(String name, int exp, String availability, String about,
       String phone, String profimg) async {
@@ -747,7 +747,7 @@ class ServiceController extends ChangeNotifier {
       .doc('vegetable')
       .collection('ladiesfinger');
 
-  //add data of Ginger
+  //add data of ladiesfinger
 
   void addLadiesFinger(String name, int exp, String availability, String about,
       String phone, String profimg) async {
@@ -856,7 +856,7 @@ class ServiceController extends ChangeNotifier {
 
   void addCakes(String name, int exp, String availability, String about,
       String phone, String profimg) async {
-    await collectionRefIvyGourd.add({
+    await collectionRefCake.add({
       'name': name,
       'exp': exp,
       'availability': availability,
