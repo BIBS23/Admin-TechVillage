@@ -135,9 +135,10 @@ class _AddDryCleanersState extends State<AddDryCleaners> {
                             name.text,
                             int.parse(exp.text),
                             available.text,
-                            access.imageUrl,
                             about.text,
-                            phone.text);
+                            phone.text,
+                            access.imageUrl,
+                            );
                         available.clear();
                         exp.clear();
                         name.clear();

@@ -179,7 +179,7 @@ class ServiceController extends ChangeNotifier {
       .doc('housekeepers')
       .collection('worker');
 
-  //add data of Nurse
+  //add data of Housekeeprs
 
   void addHouseKeepers(String name, int exp, String availability, String about,
       String phone, String profimg) async {

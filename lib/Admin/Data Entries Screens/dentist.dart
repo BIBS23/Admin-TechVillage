@@ -137,7 +137,9 @@ class _AddDentistState extends State<AddDentist> {
                             available.text,
                             access.imageUrl,
                             about.text,
-                            phone.text);
+                            phone.text,
+                            
+                            );
                         available.clear();
                         exp.clear();
                         name.clear();

@@ -135,9 +135,10 @@ class _AddGooseBerryPickleState extends State<AddGooseBerryPickle> {
                             name.text,
                             int.parse(exp.text),
                             available.text,
-                            access.imageUrl,
                             about.text,
-                            phone.text);
+                            phone.text,
+                             access.imageUrl,
+                            );
                         available.clear();
                         exp.clear();
                         name.clear();

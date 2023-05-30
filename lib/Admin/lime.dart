@@ -27,7 +27,7 @@ class _AddLimePickleState extends State<AddLimePickle> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: const Text('Egg'),
+          title: const Text('Lime Pickle'),
           centerTitle: true,
           backgroundColor: const Color.fromRGBO(62, 202, 59, 100),
         ),
@@ -134,7 +134,7 @@ class _AddLimePickleState extends State<AddLimePickle> {
                     ),
                       onPressed: () {
                         db.addLimePickle(name.text, int.parse(exp.text), available.text,
-                        access.imageUrl,about.text,phone.text);
+                        about.text,phone.text,    access.imageUrl,);
                         available.clear();
                         exp.clear();
                         name.clear();
