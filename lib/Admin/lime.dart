@@ -56,7 +56,6 @@ class _AddLimePickleState extends State<AddLimePickle> {
                       maxlines: 1,
                       mylabel: 'Name',
                       type: TextInputType.text),
-                  Text(auth.userName.toString()),
                   TxtField(
                       mycontroller: exp,
                       mylabel: 'Experiance',

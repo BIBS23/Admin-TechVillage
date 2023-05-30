@@ -26,7 +26,7 @@ class _AddConstructionWorkerState extends State<AddConstructionWorker> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: const Text('Egg'),
+          title: const Text('Construction Worker'),
           centerTitle: true,
           backgroundColor: const Color.fromRGBO(62, 202, 59, 100),
         ),

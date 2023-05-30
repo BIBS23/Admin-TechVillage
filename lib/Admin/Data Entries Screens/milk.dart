@@ -131,7 +131,7 @@ class _AddMilkState extends State<AddMilk> {
                       minimumSize: const Size(140, 45)
                     ),
                       onPressed: () {
-                        db.addTutor(
+                        db.addMilk(
                             name.text,
                             int.parse(exp.text),
                             available.text,

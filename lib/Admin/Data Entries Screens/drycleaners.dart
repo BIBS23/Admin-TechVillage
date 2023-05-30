@@ -55,7 +55,6 @@ class _AddDryCleanersState extends State<AddDryCleaners> {
                       maxlines: 1,
                       mylabel: 'Name',
                       type: TextInputType.text),
-                  Text(auth.userName.toString()),
                   TxtField(
                     mycontroller: exp,
                     mylabel: 'Experiance',

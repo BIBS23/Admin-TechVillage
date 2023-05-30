@@ -134,7 +134,7 @@ class _AddDoctorState extends State<AddDoctor> {
                     ),
                       onPressed: () {
                         db.addDoctor(name.text, int.parse(exp.text), available.text,
-                        access.imageUrl,about.text,phone.text);
+                       about.text,phone.text, access.imageUrl);
                         available.clear();
                         exp.clear();
                         name.clear();

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -36,8 +37,21 @@ class _MyAppState extends State<MyApp> {
   bool isDeviceConnected = false;
   bool isAlertSet = false;
 
+
+  checkState() async {
+    auth.authStateChanges().listen((User? user) async {
+      if (user != null && mounted) {
+          setState(() {
+            isLoggin = true;
+          });
+        }
+      
+    });
+  }
+
   @override
   void initState() {
+    checkState();
     getConnectivity();
     super.initState();
   }

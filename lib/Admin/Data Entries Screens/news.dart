@@ -57,53 +57,6 @@ class _AddNewsState extends State<AddNews> {
                       mylabel: 'About',
                       maxlines: 5,
                       type: TextInputType.text),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(width: 12),
-                      const Text('Upload Image'),
-                      IconButton(
-                          onPressed: () {
-                            access.getAccess(context);
-                            showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    content: SizedBox(
-                                      height: 150,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          GestureDetector(
-                                              onTap: () {
-                                                access.pickImage(
-                                                    ImageSource.camera);
-                                                Navigator.pop(context);
-                                              },
-                                              child: const ListTile(
-                                                leading: Icon(Icons.camera),
-                                                title: Text('Camera'),
-                                              )),
-                                          GestureDetector(
-                                              onTap: () {
-                                                access.pickImage(
-                                                    ImageSource.gallery);
-                                                Navigator.pop(context);
-                                              },
-                                              child: const ListTile(
-                                                leading: Icon(Icons.photo),
-                                                title: Text('Gallary'),
-                                              )),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                });
-                          },
-                          icon: const Icon(Icons.camera_alt_outlined)),
-                    ],
-                  ),
                   const SizedBox(height: 15),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(

@@ -303,7 +303,7 @@ class ServiceController extends ChangeNotifier {
 
   CollectionReference collectionRefTutor = FirebaseFirestore.instance
       .collection('services')
-      .doc('localworkers')
+      .doc('tutors')
       .collection('worker');
 
   //add data of Tutor
@@ -324,7 +324,7 @@ class ServiceController extends ChangeNotifier {
 
   CollectionReference collectionRefMechanic = FirebaseFirestore.instance
       .collection('services')
-      .doc('mechanic')
+      .doc('mechanics')
       .collection('worker');
 
   //add data of Mechanic
@@ -387,7 +387,7 @@ class ServiceController extends ChangeNotifier {
 
   CollectionReference collectionRefPainter = FirebaseFirestore.instance
       .collection('services')
-      .doc('painter')
+      .doc('painters')
       .collection('worker');
 
   //add data of Painter
@@ -828,8 +828,8 @@ class ServiceController extends ChangeNotifier {
 
   CollectionReference collectionRefBanana = FirebaseFirestore.instance
       .collection('products')
-      .doc('vegetable')
-      .collection('banana');
+      .doc('banana')
+      .collection('sellers');
 
   //add data of Banana
 
