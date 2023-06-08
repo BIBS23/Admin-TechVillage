@@ -133,8 +133,8 @@ class _AddTailorState extends State<AddTailor> {
                       minimumSize: const Size(140, 45)
                     ),
                       onPressed: () {
-                        db.addTailor(name.text, int.parse(exp.text), available.text,
-                        about.text,phone.text, access.imageUrl,);
+                        db.addTailor(name.text, exp.text, available.text,
+                        about.text,phone.text, access.imageUrl,false);
                         available.clear();
                         exp.clear();
                         name.clear();

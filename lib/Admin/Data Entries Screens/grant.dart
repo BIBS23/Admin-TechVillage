@@ -17,6 +17,7 @@ class AddGrants extends StatefulWidget {
 class _AddGrantsState extends State<AddGrants> {
   TextEditingController grant = TextEditingController();
   TextEditingController exp = TextEditingController();
+    TextEditingController category = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +63,12 @@ class _AddGrantsState extends State<AddGrants> {
                     type: TextInputType.text,
                     maxlines: 1,
                   ),
+                   TxtField(
+                    mycontroller: category,
+                    mylabel: 'Category',
+                    type: TextInputType.text,
+                    maxlines: 1,
+                  ),
                  
                     const  SizedBox(height: 40),
                     ElevatedButton(
@@ -70,7 +77,7 @@ class _AddGrantsState extends State<AddGrants> {
                       minimumSize: const Size(140, 45)
                     ),
                       onPressed: () {
-                        db.addGrants(grant.text, exp.text);
+                        db.addGrants(grant.text, exp.text,category.text);
                         exp.clear();
                         grant.clear();
                         FocusScope.of(context).unfocus();

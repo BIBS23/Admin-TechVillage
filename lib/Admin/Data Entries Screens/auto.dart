@@ -56,33 +56,28 @@ class _AddAutoDriverState extends State<AddAutoDriver> {
                       mylabel: 'Name',
                       maxlines: 1,
                       type: TextInputType.text),
-                 
                   TxtField(
                       mycontroller: exp,
-                       maxlines: 1,
+                      maxlines: 1,
                       mylabel: 'Experiance',
                       type: TextInputType.number),
                   TxtField(
                       mycontroller: available,
-                       maxlines: 1,
+                      maxlines: 1,
                       mylabel: 'Available Time',
                       type: TextInputType.text),
                   TxtField(
-                      mycontroller: vehiclenumber,
-                      mylabel: 'Vehicle Number',
-                       maxlines: 1,
-                      type: TextInputType.text),
-                  TxtField(
                       mycontroller: phone,
-                       maxlines: 1,
+                      maxlines: 1,
                       mylabel: 'Phone Number',
                       type: TextInputType.number),
                   TxtField(
-                      mycontroller: about,
-                      mylabel: 'About',
-                       maxlines: 5,
-                      textInputAction: TextInputAction.newline,
-                      type: TextInputType.multiline,),
+                    mycontroller: about,
+                    mylabel: 'About',
+                    maxlines: 5,
+                    textInputAction: TextInputAction.newline,
+                    type: TextInputType.multiline,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -131,22 +126,27 @@ class _AddAutoDriverState extends State<AddAutoDriver> {
                     ],
                   ),
                   const SizedBox(height: 15),
-                                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      minimumSize: const Size(140, 45)
-                    ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green,
+                          minimumSize: const Size(140, 45)),
                       onPressed: () {
-                        db.addAuto(name.text, int.parse(exp.text), available.text,
-                        access.imageUrl,about.text,phone.text,vehiclenumber.text);
+                        db.addAuto(
+                            name.text,
+                            exp.text,
+                            available.text,
+                            access.imageUrl,
+                            about.text,
+                            phone.text,
+                            false);
                         available.clear();
                         exp.clear();
                         name.clear();
                         phone.clear();
+                        about.clear();
                         FocusScope.of(context).unfocus();
                       },
                       child: const Text('Submit')),
-
                 ],
               ),
             ),

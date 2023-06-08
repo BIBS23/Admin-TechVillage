@@ -133,8 +133,8 @@ class _AddDoctorState extends State<AddDoctor> {
                       minimumSize: const Size(140, 45)
                     ),
                       onPressed: () {
-                        db.addDoctor(name.text, int.parse(exp.text), available.text,
-                       about.text,phone.text, access.imageUrl);
+                        db.addDoctor(name.text, exp.text, available.text,
+                       about.text,phone.text, access.imageUrl,false);
                         available.clear();
                         exp.clear();
                         name.clear();

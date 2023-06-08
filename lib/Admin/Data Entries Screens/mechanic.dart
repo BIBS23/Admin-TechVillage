@@ -133,8 +133,8 @@ class _AddMechanicState extends State<AddMechanic> {
                       minimumSize: const Size(140, 45)
                     ),
                       onPressed: () {
-                        db.addMechanic(name.text, int.parse(exp.text), available.text,
-                       about.text,phone.text,    access.imageUrl,);
+                        db.addMechanic(name.text, exp.text, available.text,
+                       about.text,phone.text,    access.imageUrl,false);
                         available.clear();
                         exp.clear();
                         name.clear();

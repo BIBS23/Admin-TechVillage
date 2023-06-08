@@ -132,8 +132,8 @@ class _AddElectricianState extends State<AddElectrician> {
                       minimumSize: const Size(140, 45)
                     ),
                       onPressed: () {
-                        db.addElectrician(name.text, int.parse(exp.text), available.text,
-                       about.text,phone.text, access.imageUrl);
+                        db.addElectrician(name.text,exp.text, available.text,
+                       about.text,phone.text, access.imageUrl,false);
                         available.clear();
                         exp.clear();
                         name.clear();

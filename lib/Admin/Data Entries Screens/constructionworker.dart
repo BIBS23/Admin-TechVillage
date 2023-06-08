@@ -133,11 +133,11 @@ class _AddConstructionWorkerState extends State<AddConstructionWorker> {
                       onPressed: () {
                         db.addConstructionWorker(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                        
                             about.text,
-                            phone.text,     access.imageUrl,
+                            phone.text,     access.imageUrl,true
                             
                             );
                         available.clear();

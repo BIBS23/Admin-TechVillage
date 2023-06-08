@@ -133,11 +133,11 @@ class _AddHouseKeepersState extends State<AddHouseKeepers> {
                       onPressed: () {
                         db.addHouseKeepers(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                             about.text,
                             phone.text,
-                            access.imageUrl,);
+                            access.imageUrl,false);
                         available.clear();
                         exp.clear();
                         name.clear();

@@ -132,12 +132,12 @@ class _AddNurseState extends State<AddNurse> {
                       onPressed: () {
                         db.addNurse(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                             
                             about.text,
                             phone.text,
-                            access.imageUrl,);
+                            access.imageUrl,false);
                         available.clear();
                         exp.clear();
                         name.clear();

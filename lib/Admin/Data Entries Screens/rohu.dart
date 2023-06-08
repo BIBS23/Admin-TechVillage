@@ -58,16 +58,11 @@ class _AddRohuState extends State<AddRohu> {
                  
                   TxtField(
                       mycontroller: exp,
-                      mylabel: 'Experiance',
-                      type: TextInputType.number,
+                      mylabel: 'Rate',
+                      type: TextInputType.text,
                       maxlines: 1,
                       ),
-                  TxtField(
-                      mycontroller: available,
-                      mylabel: 'Available Time',
-                       maxlines: 1,
-                      type: TextInputType.text),
-                 
+                
                   TxtField(
                       mycontroller: phone,
                       mylabel: 'Phone Number',
@@ -133,8 +128,8 @@ class _AddRohuState extends State<AddRohu> {
                       minimumSize: const Size(140, 45)
                     ),
                       onPressed: () {
-                        db.addRohu(name.text, int.parse(exp.text), available.text,
-                       about.text,phone.text, access.imageUrl,);
+                        db.addRohu(name.text, exp.text, available.text,
+                       about.text,phone.text, access.imageUrl,true);
                         available.clear();
                         exp.clear();
                         name.clear();

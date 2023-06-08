@@ -58,15 +58,11 @@ class _AddChilliPowderState extends State<AddChilliPowder> {
                 
                   TxtField(
                       mycontroller: exp,
-                      mylabel: 'Experiance',
-                      type: TextInputType.number,
+                      mylabel: 'Rate',
+                      type: TextInputType.text,
                       maxlines: 1,
                       ),
-                  TxtField(
-                      mycontroller: available,
-                      mylabel: 'Available Time',
-                       maxlines: 1,
-                      type: TextInputType.text),
+               
                  
                   TxtField(
                       mycontroller: phone,
@@ -133,8 +129,8 @@ class _AddChilliPowderState extends State<AddChilliPowder> {
                       minimumSize: const Size(140, 45)
                     ),
                       onPressed: () {
-                        db.addChilliPowder(name.text, int.parse(exp.text), available.text,
-                      about.text,phone.text, access.imageUrl,);
+                        db.addChilliPowder(name.text, exp.text, available.text,
+                      about.text,phone.text, access.imageUrl,true);
                         available.clear();
                         exp.clear();
                         name.clear();

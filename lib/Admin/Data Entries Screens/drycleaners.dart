@@ -132,11 +132,11 @@ class _AddDryCleanersState extends State<AddDryCleaners> {
                       onPressed: () {
                         db.addDryCleaners(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                             about.text,
                             phone.text,
-                            access.imageUrl,
+                            access.imageUrl,false
                             );
                         available.clear();
                         exp.clear();

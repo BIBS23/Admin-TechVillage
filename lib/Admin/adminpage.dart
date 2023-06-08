@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:techvillage_admin/Admin/Data%20Entries%20Screens/news.dart';
-import 'package:techvillage_admin/Admin/Data%20Entries%20Screens/pushnotification.dart';
 import 'package:techvillage_admin/Admin/product_screen.dart';
 import 'package:techvillage_admin/Admin/provider/login_controller.dart';
 import 'package:techvillage_admin/Admin/service_page.dart';
@@ -23,7 +21,7 @@ class AdminHomePage extends StatelessWidget {
               onPressed: () {
                 logout.handleGoogleSignOut(context);
               },
-              icon: Icon(Icons.logout),
+              icon:  Icon(Icons.logout),
             )
           ],
           title: const Text('Admin App', style: TextStyle(letterSpacing: 5)),
@@ -61,16 +59,6 @@ class AdminHomePage extends StatelessWidget {
                       image: 'assets/grant1.png',
                       title: 'Grants',
                       route: AddGrants(),
-                    ),
-                    const MyTile(
-                      image: 'assets/news.jpg',
-                      title: 'News',
-                      route: AddNews(),
-                    ),
-                    const MyTile(
-                      image: 'assets/noti.jpg',
-                      title: 'Push Notification',
-                      route: PushNotificationScreen(),
                     ),
                   ],
                 ),

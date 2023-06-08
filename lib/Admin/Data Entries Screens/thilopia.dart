@@ -57,15 +57,11 @@ class _AddThilopiaState extends State<AddThilopia> {
                       type: TextInputType.text),
                   TxtField(
                     mycontroller: exp,
-                    mylabel: 'Experiance',
+                    mylabel: 'Rate',
                     type: TextInputType.number,
                     maxlines: 1,
                   ),
-                  TxtField(
-                      mycontroller: available,
-                      mylabel: 'Available Time',
-                      maxlines: 1,
-                      type: TextInputType.text),
+                
                   TxtField(
                       mycontroller: phone,
                       mylabel: 'Phone Number',
@@ -132,10 +128,10 @@ class _AddThilopiaState extends State<AddThilopia> {
                       onPressed: () {
                         db.addThilopia(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                             about.text,
-                            phone.text, access.imageUrl,);
+                            phone.text, access.imageUrl,true);
                         available.clear();
                         exp.clear();
                         name.clear();

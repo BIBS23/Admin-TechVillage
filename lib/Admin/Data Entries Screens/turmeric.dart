@@ -57,15 +57,11 @@ class _AddTurmericState extends State<AddTurmeric> {
                       type: TextInputType.text),
                   TxtField(
                     mycontroller: exp,
-                    mylabel: 'Experiance',
-                    type: TextInputType.number,
+                    mylabel: 'Rate',
+                    type: TextInputType.text,
                     maxlines: 1,
                   ),
-                  TxtField(
-                      mycontroller: available,
-                      mylabel: 'Available Time',
-                      maxlines: 1,
-                      type: TextInputType.text),
+               
                   TxtField(
                       mycontroller: phone,
                       mylabel: 'Phone Number',
@@ -133,10 +129,10 @@ class _AddTurmericState extends State<AddTurmeric> {
                       onPressed: () {
                         db.addTurmeric(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                             about.text,
-                            phone.text, access.imageUrl,);
+                            phone.text, access.imageUrl,true);
                         available.clear();
                         exp.clear();
                         name.clear();

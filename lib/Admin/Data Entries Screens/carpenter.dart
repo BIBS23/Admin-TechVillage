@@ -133,11 +133,11 @@ class _AddCarpenterState extends State<AddCarpenter> {
                       onPressed: () {
                         db.addCarpenter(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                             about.text,
                             phone.text,
-                             access.imageUrl,
+                             access.imageUrl,false
                             );
                         available.clear();
                         exp.clear();

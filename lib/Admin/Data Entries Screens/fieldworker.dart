@@ -133,11 +133,11 @@ class _AddFieldWorkerState extends State<AddFieldWorker> {
                       onPressed: () {
                         db.addFieldWorker(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                      
                             about.text,
-                            phone.text,       access.imageUrl,
+                            phone.text,       access.imageUrl,false
                             
                             );
                         available.clear();

@@ -132,11 +132,11 @@ class _AddLawnMoverState extends State<AddLawnMover> {
                       onPressed: () {
                         db.addLawnMover(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                      
                             about.text,
-                            phone.text,       access.imageUrl,
+                            phone.text,       access.imageUrl,false
                             
                             );
                         available.clear();

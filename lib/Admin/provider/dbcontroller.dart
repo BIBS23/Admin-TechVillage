@@ -13,8 +13,8 @@ class ServiceController extends ChangeNotifier {
 
   // add data of Auto
 
-  void addAuto(String name, int exp, String availability, String profimg,
-      String about, String phone, String vehicle) async {
+  void addAuto(String name, String exp, String availability, String profimg,
+      String about, String phone, bool isTrue) async {
     await collectionRefAuto.add({
       'name': name,
       'exp': exp,
@@ -22,7 +22,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
-      'vehicle': vehicle,
+      'isTrue': isTrue,
     });
   }
 
@@ -35,8 +35,8 @@ class ServiceController extends ChangeNotifier {
 
   // add data of plumber
 
-  void addPlumber(String name, int exp, String availability, String profimg,
-      String about, String phone) async {
+  void addPlumber(String name, String exp, String availability, String profimg,
+      String about, String phone, bool isTrue) async {
     await collectionRefPlumber.add({
       'name': name,
       'exp': exp,
@@ -44,6 +44,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -56,8 +57,8 @@ class ServiceController extends ChangeNotifier {
 
   // add data of Tailor
 
-  void addTailor(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addTailor(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefTailor.add({
       'name': name,
       'exp': exp,
@@ -65,6 +66,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -77,8 +79,8 @@ class ServiceController extends ChangeNotifier {
 
   // add data of Doctor
 
-  void addDoctor(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addDoctor(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefDoctor.add({
       'name': name,
       'exp': exp,
@@ -86,6 +88,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -98,8 +101,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Dentist
 
-  void addDentist(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addDentist(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefDentist.add({
       'name': name,
       'exp': exp,
@@ -107,6 +110,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -119,8 +123,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of AshaWorker
 
-  void addAshaworker(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addAshaworker(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefAshaworker.add({
       'name': name,
       'exp': exp,
@@ -128,6 +132,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
   // collection Referance of  HomeNurse
@@ -139,8 +144,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of HomeNurse
 
-  void addHomeNurse(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addHomeNurse(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefHomeNurse.add({
       'name': name,
       'exp': exp,
@@ -148,6 +153,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -160,8 +166,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Nurse
 
-  void addNurse(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addNurse(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefNurse.add({
       'name': name,
       'exp': exp,
@@ -169,6 +175,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -181,8 +188,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Housekeeprs
 
-  void addHouseKeepers(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addHouseKeepers(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefHouseKeepers.add({
       'name': name,
       'exp': exp,
@@ -190,6 +197,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -202,8 +210,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Electrician
 
-  void addElectrician(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addElectrician(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefElectrician.add({
       'name': name,
       'exp': exp,
@@ -211,6 +219,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -223,8 +232,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Mason
 
-  void addMason(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addMason(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefMason.add({
       'name': name,
       'exp': exp,
@@ -232,6 +241,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -244,8 +254,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of lawnmover
 
-  void addLawnMover(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addLawnMover(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefLawnMover.add({
       'name': name,
       'exp': exp,
@@ -253,6 +263,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -266,8 +277,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of ConstructionWorker
 
-  void addConstructionWorker(String name, int exp, String availability,
-      String about, String phone, String profimg) async {
+  void addConstructionWorker(String name, String exp, String availability,
+      String about, String phone, String profimg, bool isTrue) async {
     await collectionRefConstructionWorker.add({
       'name': name,
       'exp': exp,
@@ -275,6 +286,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -287,8 +299,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of FieldWorker
 
-  void addFieldWorker(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addFieldWorker(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefFieldWorker.add({
       'name': name,
       'exp': exp,
@@ -296,6 +308,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -308,8 +321,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Tutor
 
-  void addTutor(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addTutor(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefTutor.add({
       'name': name,
       'exp': exp,
@@ -317,6 +330,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -329,8 +343,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Mechanic
 
-  void addMechanic(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addMechanic(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefMechanic.add({
       'name': name,
       'exp': exp,
@@ -338,6 +352,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -350,8 +365,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Carpenter
 
-  void addCarpenter(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addCarpenter(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefCarpenter.add({
       'name': name,
       'exp': exp,
@@ -359,6 +374,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -371,8 +387,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Climbers
 
-  void addClimbers(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addClimbers(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefClimbers.add({
       'name': name,
       'exp': exp,
@@ -392,8 +408,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Painter
 
-  void addPainter(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addPainter(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefPainter.add({
       'name': name,
       'exp': exp,
@@ -401,6 +417,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -413,8 +430,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of DryCleaners
 
-  void addDryCleaners(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addDryCleaners(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefDryCleaners.add({
       'name': name,
       'exp': exp,
@@ -422,6 +439,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -434,8 +452,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Milk
 
-  void addMilk(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addMilk(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefMilk.add({
       'name': name,
       'exp': exp,
@@ -443,6 +461,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -455,8 +474,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Coconut
 
-  void addCoconut(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addCoconut(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefCoconut.add({
       'name': name,
       'exp': exp,
@@ -464,6 +483,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -476,8 +496,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Egg
 
-  void addEgg(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addEgg(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefEgg.add({
       'name': name,
       'exp': exp,
@@ -485,6 +505,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -497,8 +518,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Mango Pickle
 
-  void addMangoPickle(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addMangoPickle(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefMangoPickle.add({
       'name': name,
       'exp': exp,
@@ -506,6 +527,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -518,8 +540,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Lime
 
-  void addLimePickle(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addLimePickle(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefLimePickle.add({
       'name': name,
       'exp': exp,
@@ -527,6 +549,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -539,8 +562,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of GooseBerry
 
-  void addGooseBerry(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addGooseBerry(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefGooseBerry.add({
       'name': name,
       'exp': exp,
@@ -548,6 +571,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -560,8 +584,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Mushi
 
-  void addMushi(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addMushi(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefMushi.add({
       'name': name,
       'exp': exp,
@@ -569,6 +593,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -581,8 +606,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Thilopia
 
-  void addThilopia(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addThilopia(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefThilopia.add({
       'name': name,
       'exp': exp,
@@ -590,6 +615,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -602,8 +628,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of CAtla
 
-  void addCatla(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addCatla(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefCatla.add({
       'name': name,
       'exp': exp,
@@ -611,6 +637,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -623,8 +650,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Rohu
 
-  void addRohu(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addRohu(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefRohu.add({
       'name': name,
       'exp': exp,
@@ -632,6 +659,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -644,8 +672,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Chicken
 
-  void addChicken(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addChicken(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefChicken.add({
       'name': name,
       'exp': exp,
@@ -653,6 +681,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -665,8 +694,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Pepper
 
-  void addPepper(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addPepper(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefPepper.add({
       'name': name,
       'exp': exp,
@@ -674,6 +703,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -686,8 +716,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Ginger
 
-  void addGinger(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addGinger(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefGinger.add({
       'name': name,
       'exp': exp,
@@ -695,6 +725,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -707,8 +738,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Turmeric
 
-  void addTurmeric(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addTurmeric(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefTurmeric.add({
       'name': name,
       'exp': exp,
@@ -716,6 +747,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -728,8 +760,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of ChilliPowder
 
-  void addChilliPowder(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addChilliPowder(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefChilliPowder.add({
       'name': name,
       'exp': exp,
@@ -737,6 +769,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -749,8 +782,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of ladiesfinger
 
-  void addLadiesFinger(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addLadiesFinger(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefLadiesFinger.add({
       'name': name,
       'exp': exp,
@@ -758,6 +791,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -770,8 +804,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Tomato
 
-  void addTomato(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addTomato(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefTomato.add({
       'name': name,
       'exp': exp,
@@ -779,6 +813,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -791,8 +826,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of BitterGourd
 
-  void addBitterGourd(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addBitterGourd(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefBitterGourd.add({
       'name': name,
       'exp': exp,
@@ -800,6 +835,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -812,8 +848,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of IvyGourd
 
-  void addIvyGourd(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addIvyGourd(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefIvyGourd.add({
       'name': name,
       'exp': exp,
@@ -821,6 +857,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -833,8 +870,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Banana
 
-  void addBanana(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addBanana(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefBanana.add({
       'name': name,
       'exp': exp,
@@ -842,6 +879,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -854,8 +892,8 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Cakes
 
-  void addCakes(String name, int exp, String availability, String about,
-      String phone, String profimg) async {
+  void addCakes(String name, String exp, String availability, String about,
+      String phone, String profimg, bool isTrue) async {
     await collectionRefCake.add({
       'name': name,
       'exp': exp,
@@ -863,6 +901,7 @@ class ServiceController extends ChangeNotifier {
       'profimg': profimg,
       'about': about,
       'phone': phone,
+      'isTrue': isTrue,
     });
   }
 
@@ -873,24 +912,11 @@ class ServiceController extends ChangeNotifier {
 
   //add data of Grants
 
-  void addGrants(String grant, String exp) async {
+  void addGrants(String grant, String exp, String category) async {
     await collectionRefGrants.add({
       'grant': grant,
       'exp': exp,
-    });
-  }
-
-  // collection Referance of News
-
-  CollectionReference collectionRefNews =
-      FirebaseFirestore.instance.collection('news');
-
-  //add data of News
-
-  void addNews(String title, String about) async {
-    await collectionRefNews.add({
-      'title': title,
-      'about': about,
+      'category':category
     });
   }
 }

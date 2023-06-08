@@ -58,15 +58,11 @@ class _AddBananaState extends State<AddBanana> {
                 
                   TxtField(
                     mycontroller: exp,
-                    mylabel: 'Experiance',
-                    type: TextInputType.number,
+                    mylabel: 'Rate',
+                    type: TextInputType.text,
                     maxlines: 1,
                   ),
-                  TxtField(
-                      mycontroller: available,
-                      mylabel: 'Available Time',
-                      maxlines: 1,
-                      type: TextInputType.text),
+              
                   TxtField(
                       mycontroller: phone,
                       mylabel: 'Phone Number',
@@ -133,11 +129,11 @@ class _AddBananaState extends State<AddBanana> {
                       onPressed: () {
                         db.addBanana(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                             about.text,
                             phone.text,
-                            access.imageUrl,
+                            access.imageUrl,true
                             );
                         available.clear();
                         exp.clear();

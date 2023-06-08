@@ -6,7 +6,6 @@ import 'package:techvillage_admin/Admin/provider/login_controller.dart';
 import 'package:techvillage_admin/Admin/provider/media_access.dart';
 import 'package:techvillage_admin/Admin/utils/txtfield.dart';
 
-
 class AddLimePickle extends StatefulWidget {
   const AddLimePickle({
     super.key,
@@ -57,21 +56,15 @@ class _AddLimePickleState extends State<AddLimePickle> {
                       mylabel: 'Name',
                       type: TextInputType.text),
                   TxtField(
-                      mycontroller: exp,
-                      mylabel: 'Experiance',
-                      type: TextInputType.number,
-                      maxlines: 1,
-                      ),
-                  TxtField(
-                      mycontroller: available,
-                      mylabel: 'Available Time',
-                       maxlines: 1,
-                      type: TextInputType.text),
-                 
+                    mycontroller: exp,
+                    mylabel: 'Rate',
+                    type: TextInputType.number,
+                    maxlines: 1,
+                  ),
                   TxtField(
                       mycontroller: phone,
                       mylabel: 'Phone Number',
-                       maxlines: 1,
+                      maxlines: 1,
                       type: TextInputType.number),
                   TxtField(
                       mycontroller: about,
@@ -125,23 +118,22 @@ class _AddLimePickleState extends State<AddLimePickle> {
                           icon: const Icon(Icons.camera_alt_outlined)),
                     ],
                   ),
-                      const  SizedBox(height: 15),
-                    ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      minimumSize: const Size(140, 45)
-                    ),
+                  const SizedBox(height: 15),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green,
+                          minimumSize: const Size(140, 45)),
                       onPressed: () {
-                        db.addLimePickle(name.text, int.parse(exp.text), available.text,
-                        about.text,phone.text,    access.imageUrl,);
+                        db.addLimePickle(name.text, exp.text, available.text,
+                        about.text, phone.text, access.imageUrl, true);
                         available.clear();
                         exp.clear();
                         name.clear();
                         phone.clear();
+                        about.clear();
                         FocusScope.of(context).unfocus();
                       },
                       child: const Text('Submit')),
-
                 ],
               ),
             ),

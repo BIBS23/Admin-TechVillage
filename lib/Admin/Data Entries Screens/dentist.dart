@@ -133,11 +133,11 @@ class _AddDentistState extends State<AddDentist> {
                       onPressed: () {
                         db.addDentist(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                             about.text,
                             phone.text,
-                            access.imageUrl,
+                            access.imageUrl,false
                             
                             );
                         available.clear();

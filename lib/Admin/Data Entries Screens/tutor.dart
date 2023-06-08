@@ -58,7 +58,7 @@ class _AddTutorState extends State<AddTutor> {
                   TxtField(
                     mycontroller: exp,
                     mylabel: 'Experiance',
-                    type: TextInputType.number,
+                    type: TextInputType.text,
                     maxlines: 1,
                   ),
                   TxtField(
@@ -132,11 +132,11 @@ class _AddTutorState extends State<AddTutor> {
                       onPressed: () {
                         db.addTutor(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                         
                             about.text,
-                            phone.text,    access.imageUrl,);
+                            phone.text,    access.imageUrl,false);
                         available.clear();
                         exp.clear();
                         name.clear();

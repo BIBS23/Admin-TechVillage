@@ -131,11 +131,11 @@ class _AddPlumberState extends State<AddPlumber> {
                       onPressed: () {
                         db.addPlumber(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                             access.imageUrl,
                             about.text,
-                            phone.text,);
+                            phone.text,false);
                         available.clear();
                         exp.clear();
                         name.clear();

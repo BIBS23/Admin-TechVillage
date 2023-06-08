@@ -58,15 +58,11 @@ class _AddEggState extends State<AddEgg> {
                  
                   TxtField(
                     mycontroller: exp,
-                    mylabel: 'Experiance',
-                    type: TextInputType.number,
+                    mylabel: 'Rate',
+                    type: TextInputType.text,
                     maxlines: 1,
                   ),
-                  TxtField(
-                      mycontroller: available,
-                      mylabel: 'Available Time',
-                      maxlines: 1,
-                      type: TextInputType.text),
+                 
                   TxtField(
                       mycontroller: phone,
                       mylabel: 'Phone Number',
@@ -133,11 +129,11 @@ class _AddEggState extends State<AddEgg> {
                       onPressed: () {
                         db.addEgg(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                             about.text,
                             phone.text,
-                             access.imageUrl,
+                             access.imageUrl,true
                             );
                         available.clear();
                         exp.clear();

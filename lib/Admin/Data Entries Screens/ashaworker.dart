@@ -136,11 +136,11 @@ class _AddAshaWorkerState extends State<AddAshaWorker> {
                       onPressed: () {
                         db.addAshaworker(
                             name.text,
-                            int.parse(exp.text),
+                            exp.text,
                             available.text,
                             about.text,
                             phone.text,
-                             access.imageUrl,
+                             access.imageUrl,false
                             );
                         available.clear();
                         exp.clear();
