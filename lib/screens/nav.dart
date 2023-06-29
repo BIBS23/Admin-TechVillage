@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:techvillage_admin/Services/service_page.dart';
+import 'package:techvillage_admin/screens/grant_screen.dart';
 import '../products/products.dart';
 import 'user_profile.dart';
 
@@ -16,6 +17,7 @@ class _BottomNavState extends State<BottomNav> {
   List screens = const[
     ProductsPage(),
     ServicePage(),
+    NotificationPage(),
     TechVillageProfilePage(),
   ];
   int selectedIndex = 0;
@@ -38,9 +40,7 @@ class _BottomNavState extends State<BottomNav> {
                 'assets/products.svg',
                 width: 23,
                 height: 23,
-                color: selectedIndex == 1
-                    ? const Color.fromRGBO(62, 202, 59, 100)
-                    : Colors.black,
+             
               ),
               label: 'Products'),
           BottomNavigationBarItem(
@@ -48,11 +48,10 @@ class _BottomNavState extends State<BottomNav> {
                 'assets/services.svg',
                 width: 23,
                 height: 23,
-                color: selectedIndex == 2
-                    ? const Color.fromRGBO(62, 202, 59, 100)
-                    : Colors.black,
+
               ),
               label: 'Services'),
+              const BottomNavigationBarItem(icon: Icon(Icons.add),label:'Grants' ),
           const BottomNavigationBarItem(
               icon: Icon(Icons.person_2_outlined), label: 'Profile'),
         ],

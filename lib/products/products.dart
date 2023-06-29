@@ -124,48 +124,112 @@ class _ProductsPageState extends State<ProductsPage> {
                   icon: Icon(expand ? Icons.close : Icons.search)))
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: StreamBuilder<QuerySnapshot>(
-              stream: _stream,
-              builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CupertinoActivityIndicator());
-                } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return const Center(child: Text('No data'));
-                } else {
-                  return GridView.builder(
-                    itemCount: snapshot.data!.docs.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisExtent: 120,
-                      mainAxisSpacing: 12,
-                      crossAxisSpacing: 12,
-                      crossAxisCount: 2,
-                    ),
-                    itemBuilder: (context, index) {
-                      DocumentSnapshot documentSnapshot =
-                          snapshot.data!.docs[index];
+      body: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          children: [
+            Expanded(
+              child: StreamBuilder<QuerySnapshot>(
+                stream: _stream,
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CupertinoActivityIndicator());
+                  } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                    return const Center(child: Text('No data'));
+                  } else {
+                    return GridView.builder(
+                      itemCount: snapshot.data!.docs.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        mainAxisExtent: 120,
+                        mainAxisSpacing: 12,
+                        crossAxisSpacing: 12,
+                        crossAxisCount: 2,
+                      ),
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot documentSnapshot =
+                            snapshot.data!.docs[index];
 
-                      return ProdServiceTile(
-                        image: documentSnapshot['prodimg'],
-                        title: documentSnapshot['prodtitle'],
-                        docid: documentSnapshot.id,
-                        appTitle: appTitle,
-                        widget: SellersPage(
-                          collectionRef: documentSnapshot.id,
-                          prodtitle: documentSnapshot['prodtitle'],
-                        ),
-                      );
-                    },
-                  );
-                }
-              },
+                        return GestureDetector(
+                          onDoubleTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SellersPage(
+                                          collectionRef: documentSnapshot.id,
+                                          prodtitle:
+                                              documentSnapshot['prodtitle'],
+                                        )));
+                          },
+                          onLongPress: (){
+
+                             showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: const Text('Delete Item'),
+                                content: const Text(
+                                    'Are you sure you want to delete this products?'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      FirebaseFirestore.instance
+                                  .collection('products')
+                                  .doc(documentSnapshot.id)
+                                  .collection('sellers')
+                                  .get()
+                                  .then((querySnapshot) {
+                                querySnapshot.docs.forEach((doc) {
+                                  doc.reference.delete();
+                                });
+                              }).then((_) {
+                                FirebaseFirestore.instance
+                                    .collection('products')
+                                    .doc(documentSnapshot.id)
+                                    .delete();
+                              });
+                                     
+
+                                      Navigator.pop(
+                                          context); // Close the dialog
+                                    },
+                                    child: const Text('Delete'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(
+                                          context); // Close the dialog
+                                    },
+                                    child: const Text('Cancel'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                            
+
+                             
+                          },
+                          child: ProdServiceTile(
+                            image: documentSnapshot['prodimg'],
+                            title: documentSnapshot['prodtitle'],
+                            docid: documentSnapshot.id,
+                            appTitle: appTitle,
+                            widget: SellersPage(
+                              collectionRef: documentSnapshot.id,
+                              prodtitle: documentSnapshot['prodtitle'],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  }
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
           backgroundColor: const Color.fromRGBO(62, 202, 59, 100),

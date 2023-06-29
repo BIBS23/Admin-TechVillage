@@ -144,7 +144,7 @@ class AddServiceDetails {
                     onPressed: () {
                       CollectionReference collectionRef =
                           FirebaseFirestore.instance.collection('services');
-                      collectionRef.doc(docname.toLowerCase()).collection('workers').add({
+                      collectionRef.doc(docname.replaceAll(' ','').toLowerCase()).collection('workers').add({
                         'about': aboutcontroller.text,
                         'profimg': access.imageUrl,
                         'workername': namecontroller.text,
@@ -157,7 +157,7 @@ class AddServiceDetails {
                         phonecontroller.clear();
                         expcontroller.clear();
                         availcontroller.clear();
-                        access.imageUrl.toString() == '';
+                     
                         Navigator.pop(context);
                       });
             

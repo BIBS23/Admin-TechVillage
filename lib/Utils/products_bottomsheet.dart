@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -18,9 +17,8 @@ class ModalSheet {
         return Consumer<AccessStorage>(builder: (context, access, child) {
           return Container(
             padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
+            child: ListView(
+             
               children: [
                 Center(
                   child: Container(
@@ -119,12 +117,12 @@ class ModalSheet {
                     onPressed: () {
                       CollectionReference collectionRef =
                           FirebaseFirestore.instance.collection('products');
-                      collectionRef.doc(controller.text).set({
+                      collectionRef.doc(controller.text.replaceAll(' ','').toLowerCase()).set({
                         'prodtitle': controller.text,
                         'prodimg': access.imageUrl
                       });
                       controller.clear();
-                      access.imageUrl.toString() == '';
+                    
                       Navigator.pop(context);
                     },
                   ),

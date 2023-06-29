@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:techvillage_admin/Utils/contact_tile.dart';
 import 'package:techvillage_admin/screens/profile_screen.dart';
 
-
 class ServiceProvidersPage extends StatefulWidget {
   final String? profimg;
   final String? servicetitle;
@@ -15,15 +14,15 @@ class ServiceProvidersPage extends StatefulWidget {
   final String collectionRef;
 
   const ServiceProvidersPage({
-  Key? key,
-  required this.collectionRef,
-  this.servicetitle,
-  this.profimg,
-  this.phone,
-  this.rate,
-  this.exp,
-  this.avail,
-}) : super(key: key);
+    Key? key,
+    required this.collectionRef,
+    this.servicetitle,
+    this.profimg,
+    this.phone,
+    this.rate,
+    this.exp,
+    this.avail,
+  }) : super(key: key);
 
   @override
   State<ServiceProvidersPage> createState() => _ServiceProvidersPageState();
@@ -64,22 +63,56 @@ class _ServiceProvidersPageState extends State<ServiceProvidersPage> {
                       itemBuilder: (context, index) {
                         final DocumentSnapshot documentSnapshot =
                             snapshot.data!.docs[index];
-                        return ContactTile(
-                          istrue: true,
-                          name: documentSnapshot['workername'],
-                          phoneNumber: documentSnapshot['phone'],
-                          exp: documentSnapshot['exp'],
-                          profimg: documentSnapshot['profimg'],
-                          avail: documentSnapshot['availability'],
-                          route: ProfilePage(
-                            profimg: documentSnapshot['profimg'],
-                            name: documentSnapshot['workername'],
-                            profile: documentSnapshot['about'],
-                            collection1: 'services',
-                            collection2: 'workers',
-                            document: widget.collectionRef,
-                          ),
-                        );
+                        return GestureDetector(
+                            onLongPress: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text('Delete Item'),
+                                      content: const Text(
+                                          'Are you sure you want to delete this worker'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            FirebaseFirestore.instance
+                                                .collection('services')
+                                                .doc(widget.collectionRef)
+                                                .collection('workers')
+                                                .doc(documentSnapshot.id)
+                                                .delete();
+                                            Navigator.pop(
+                                                context); // Close the dialog
+                                          },
+                                          child: const Text('Delete'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(
+                                                context); // Close the dialog
+                                          },
+                                          child: const Text('Cancel'),
+                                        ),
+                                      ],
+                                    );
+                                  });
+                            },
+                            child: ContactTile(
+                              istrue: true,
+                              name: documentSnapshot['workername'],
+                              phoneNumber: documentSnapshot['phone'],
+                              exp: documentSnapshot['exp'],
+                              profimg: documentSnapshot['profimg'],
+                              avail: documentSnapshot['availability'],
+                              route: ProfilePage(
+                                profimg: documentSnapshot['profimg'],
+                                name: documentSnapshot['workername'],
+                                profile: documentSnapshot['about'],
+                                collection1: 'services',
+                                collection2: 'workers',
+                                document: widget.collectionRef,
+                              ),
+                            ));
                       }),
                 );
               }

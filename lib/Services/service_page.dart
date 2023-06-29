@@ -2,13 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:techvillage_admin/Services/service_provider_page.dart';
-import 'package:techvillage_admin/Utils/products_bottomsheet.dart';
 import 'package:techvillage_admin/Utils/service_bottomsheet.dart';
+import 'package:techvillage_admin/products/products.dart';
 
 import '../Utils/prod_service_tile.dart';
 
 class ServicePage extends StatefulWidget {
-  const ServicePage({Key? key}) : super(key: key);
+  final String? collectionRef;
+  const ServicePage({
+    this.collectionRef,
+    Key? key}) : super(key: key);
 
   @override
   State<ServicePage> createState() => _ServicePageState();
@@ -126,46 +129,109 @@ class _ServicePageState extends State<ServicePage> {
                   icon: Icon(expand ? Icons.close : Icons.search)))
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: StreamBuilder<QuerySnapshot>(
-              stream: _stream,
-              builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CupertinoActivityIndicator());
-                } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return const Center(child: Text('No data'));
-                } else {
-                  return GridView.builder(
-                    itemCount: snapshot.data!.docs.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisExtent: 120,
-                      mainAxisSpacing: 12,
-                      crossAxisSpacing: 12,
-                      crossAxisCount: 2,
-                    ),
-                    itemBuilder: (context, index) {
-                      DocumentSnapshot documentSnapshot =
-                          snapshot.data!.docs[index];
+      body: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          children: [
+            Expanded(
+              child: StreamBuilder<QuerySnapshot>(
+                stream: _stream,
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CupertinoActivityIndicator());
+                  } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                    return const Center(child: Text('No data'));
+                  } else {
+                    return GridView.builder(
+                      itemCount: snapshot.data!.docs.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        mainAxisExtent: 120,
+                        mainAxisSpacing: 12,
+                        crossAxisSpacing: 12,
+                        crossAxisCount: 2,
+                      ),
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot documentSnapshot =
+                            snapshot.data!.docs[index];
+      
+                        return GestureDetector(
+                          onDoubleTap: (){
+                             Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ServiceProvidersPage(
+                                        collectionRef: documentSnapshot.id,
+                                        servicetitle:
+                                            documentSnapshot['servicetitle'],
+                                      )));
+                            
+                          },
+                          onLongPress: (){
+                            showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: const Text('Delete Item'),
+                                content: const Text(
+                                    'Are you sure you want to delete this service?'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                       FirebaseFirestore.instance
+                                  .collection('services')
+                                  .doc(documentSnapshot.id)
+                                  .collection('workers')
+                                  .get()
+                                  .then((querySnapshot) {
+                                querySnapshot.docs.forEach((doc) {
+                                  doc.reference.delete();
+                                });
+                              }).then((_) {
+                                FirebaseFirestore.instance
+                                    .collection('services')
+                                    .doc(documentSnapshot.id)
+                                    .delete();
+                              });
+                                     
 
-                      return ProdServiceTile(
-                          image: documentSnapshot['serviceimg'],
-                          title: documentSnapshot['servicetitle'],
-                          appTitle: appTitle,
-                          widget: ServiceProvidersPage(
-                            collectionRef: documentSnapshot.id,
-                            servicetitle: documentSnapshot['servicetitle'],
-                          ));
-                    },
-                  );
-                }
-              },
+                                      Navigator.pop(
+                                          context); // Close the dialog
+                                    },
+                                    child: const Text('Delete'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(
+                                          context); // Close the dialog
+                                    },
+                                    child: const Text('Cancel'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                         
+                            
+                          },
+                          child: ProdServiceTile(
+                              image: documentSnapshot['serviceimg'],
+                              title: documentSnapshot['servicetitle'],
+                              appTitle: appTitle,
+                              widget: ServiceProvidersPage(
+                                collectionRef: documentSnapshot.id,
+                                servicetitle: documentSnapshot['servicetitle'],
+                              )),
+                        );
+                      },
+                    );
+                  }
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
           backgroundColor: const Color.fromRGBO(62, 202, 59, 100),
@@ -174,7 +240,6 @@ class _ServicePageState extends State<ServicePage> {
           onPressed: () {
             ServiceModalSheet modal1 = ServiceModalSheet();
             modal1.showModalSheet(context, servicecontroller);
-        
           },
           child: const Icon(Icons.add)),
     );

@@ -17,9 +17,8 @@ class ServiceModalSheet {
         return Consumer<AccessStorage>(builder: (context, access, child) {
           return Container(
             padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
+            child: ListView(
+             
               children: [
                 Center(
                   child: Container(
@@ -118,12 +117,12 @@ class ServiceModalSheet {
                     onPressed: () {
                       CollectionReference collectionRef =
                           FirebaseFirestore.instance.collection('services');
-                      collectionRef.doc(controller.text).set({
+                      collectionRef.doc(controller.text.replaceAll(' ','').toLowerCase()).set({
                         'servicetitle': controller.text,
                         'serviceimg': access.imageUrl
                       });
                       controller.clear();
-                      access.imageUrl.toString() == '';
+                  
                       Navigator.pop(context);
                     },
                   ),
