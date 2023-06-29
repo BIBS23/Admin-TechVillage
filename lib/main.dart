@@ -1,24 +1,30 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:techvillage_admin/Admin/adminpage.dart';
-import 'package:techvillage_admin/Admin/provider/dbcontroller.dart';
-import 'Admin/login_screen.dart';
-import 'Admin/provider/login_controller.dart';
-import 'Admin/provider/media_access.dart';
-import 'Admin/splash_screen.dart';
-import 'firebase_options.dart';
-import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
+import 'package:techvillage_admin/controller/access_controller.dart';
+import 'package:techvillage_admin/controller/add_to_fav.dart';
+import 'package:techvillage_admin/controller/login_controller.dart';
+import 'package:techvillage_admin/controller/notification.dart';
+import 'package:techvillage_admin/screens/login_screen.dart';
+import 'screens/nav.dart';
+import 'screens/splash_screen.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  
+  // Initialize notification banner
+  NotificationBanner notificationBanner = NotificationBanner();
+  notificationBanner.initializeNotifications();
+
 
   runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key});
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -27,14 +33,16 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var auth = FirebaseAuth.instance;
   var isLoggin = false;
-  bool isDeviceConnected = false;
-  bool isAlertSet = false;
-  
+
   checkState() async {
-    auth.authStateChanges().listen((User? user) async {
+    auth.authStateChanges().listen((User? user) {
       if (user != null && mounted) {
         setState(() {
           isLoggin = true;
+        });
+      } else {
+        setState(() {
+          isLoggin = false;
         });
       }
     });
@@ -50,17 +58,18 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => AccessStorage()),
-        ChangeNotifierProvider(create: (_) => ServiceController()),
         ChangeNotifierProvider(create: (_) => AuthController()),
+        ChangeNotifierProvider(create: (_) => AccessStorage()),
+        ChangeNotifierProvider(create: (_) => NotificationBanner()),
+        ChangeNotifierProvider(create: (_) => AddToFav()),
       ],
       child: MaterialApp(
-        title: 'TechVillage Admin',
+        title: 'TechVillage',
         routes: {
-          '/signin': (context) => const AdminHomePage(),
+          '/signin': (context) => const BottomNav(),
           '/signout': (context) => const LoginScreen(),
         },
-        home: isLoggin ? const AdminHomePage() : const SplashScreen(),
+        home: isLoggin ? const BottomNav() : const SplashScreen(),
       ),
     );
   }

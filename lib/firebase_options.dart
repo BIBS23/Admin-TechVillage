@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBgcpMapW7gMK6gz0MJ0PrNDlxgBdupZk0',
-    appId: '1:1020007371342:android:dcd7ed623d37324123e91f',
+    appId: '1:1020007371342:android:9d9276f960717f4f23e91f',
     messagingSenderId: '1020007371342',
     projectId: 'techvillage-91948',
     storageBucket: 'techvillage-91948.appspot.com',
@@ -63,23 +63,21 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAv78BZhyr0F3AwZlYTZaLUmw-6BtyIJmY',
-    appId: '1:1020007371342:ios:9de2054917f36e8d23e91f',
+    appId: '1:1020007371342:ios:e3462b96bd5d066b23e91f',
     messagingSenderId: '1020007371342',
     projectId: 'techvillage-91948',
     storageBucket: 'techvillage-91948.appspot.com',
-    androidClientId: '1020007371342-9nshmekfvh963crs0fvvg74qukpqur8c.apps.googleusercontent.com',
-    iosClientId: '1020007371342-71jhvg3um5ci2pig35o0l14uk1eogsc8.apps.googleusercontent.com',
-    iosBundleId: 'com.example.techvillageAdmin',
+    iosClientId: '1020007371342-emq1ndmcffja0itk6qi3hq6e09btb52c.apps.googleusercontent.com',
+    iosBundleId: 'com.example.techvillage',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAv78BZhyr0F3AwZlYTZaLUmw-6BtyIJmY',
-    appId: '1:1020007371342:ios:e83b285cef03750823e91f',
+    appId: '1:1020007371342:ios:e3462b96bd5d066b23e91f',
     messagingSenderId: '1020007371342',
     projectId: 'techvillage-91948',
     storageBucket: 'techvillage-91948.appspot.com',
-    androidClientId: '1020007371342-9nshmekfvh963crs0fvvg74qukpqur8c.apps.googleusercontent.com',
-    iosClientId: '1020007371342-0dj186igv2uju5n885t7he2r98fv6b1o.apps.googleusercontent.com',
-    iosBundleId: 'com.example.techvillageAdmin.RunnerTests',
+    iosClientId: '1020007371342-emq1ndmcffja0itk6qi3hq6e09btb52c.apps.googleusercontent.com',
+    iosBundleId: 'com.example.techvillage',
   );
 }
