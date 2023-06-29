@@ -28,6 +28,7 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: const Color.fromRGBO(62, 202, 59, 100),
         title: const Text(
           'Grants',

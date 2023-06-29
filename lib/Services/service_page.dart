@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:techvillage_admin/Services/service_provider_page.dart';
 import 'package:techvillage_admin/Utils/service_bottomsheet.dart';
-import 'package:techvillage_admin/products/products.dart';
 
 import '../Utils/prod_service_tile.dart';
 
@@ -61,11 +60,7 @@ class _ServicePageState extends State<ServicePage> {
                 isGreaterThanOrEqualTo:
                     firstLetter + secondLetter + thirdLetter + fourthLetter)
             .where(FieldPath.documentId,
-                isLessThan: firstLetter +
-                    secondLetter +
-                    thirdLetter +
-                    fourthLetter +
-                    'z')
+                isLessThan: '$firstLetter$secondLetter$thirdLetter${fourthLetter}z')
             .snapshots();
       });
     }

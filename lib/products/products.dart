@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 import 'package:techvillage_admin/Utils/products_bottomsheet.dart';
+import 'package:techvillage_admin/controller/access_controller.dart';
 import 'package:techvillage_admin/products/product_sellers_page.dart';
 import '../Utils/prod_service_tile.dart';
 
@@ -32,10 +35,6 @@ class _ProductsPageState extends State<ProductsPage> {
     super.dispose();
     _searchController.dispose();
     prodcontroller.dispose();
-  }
-
-  void openKeyboard() {
-    FocusScope.of(context).requestFocus(inputNode);
   }
 
   void _handleSearch(String searchText) {
@@ -120,6 +119,164 @@ class _ProductsPageState extends State<ProductsPage> {
                   },
                   icon: Icon(expand ? Icons.close : Icons.search)))
         ],
+        leading: IconButton(
+            icon: Text('Ads'),
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                ),
+                builder: (BuildContext context) {
+                  String? selectedValue;
+                  return Consumer<AccessStorage>(
+                      builder: (context, access, child) {
+                    return Container(
+                      padding: const EdgeInsets.all(16),
+                      child: ListView(
+                        children: [
+                          Center(
+                            child: Container(
+                              width: 80,
+                              height: 4,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[400],
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 22),
+                          const Center(
+                              child: Text('Add Advertisement',
+                                  style: TextStyle(
+                                      fontSize: 15, letterSpacing: 2))),
+                          const SizedBox(height: 22),
+                          Center(
+                            child: GestureDetector(
+                              onTap: () {
+                                access.getAccess(context);
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        content: SizedBox(
+                                          height: 150,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              GestureDetector(
+                                                  onTap: () {
+                                                    access.pickImage(
+                                                        ImageSource.camera);
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: const ListTile(
+                                                    leading: Icon(Icons.camera),
+                                                    title: Text('Camera'),
+                                                  )),
+                                              GestureDetector(
+                                                  onTap: () {
+                                                    access.pickImage(
+                                                        ImageSource.gallery);
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: const ListTile(
+                                                    leading: Icon(Icons.photo),
+                                                    title: Text('Gallary'),
+                                                  )),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    });
+                              },
+                              child: Container(
+                                height: 100,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 0.1,
+                                        blurRadius: 7,
+                                      )
+                                    ]),
+                                child: const Icon(Icons.camera_alt_outlined),
+                              ),
+                            ),
+                          ),
+                          RadioListTile(
+                            title: Text('Advertisement 1'),
+                            value: 'ad1',
+                            groupValue: selectedValue,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedValue = value;
+                              });
+                            },
+                          ),
+                          RadioListTile(
+                            title: Text('Advertisement 2'),
+                            value: 'ad2',
+                            groupValue: selectedValue,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedValue = value;
+                              });
+                            },
+                          ),
+                          RadioListTile(
+                            title: Text('Advertisement 3'),
+                            value: 'ad3',
+                            groupValue: selectedValue,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedValue = value;
+                              });
+                            },
+                          ),
+                          const SizedBox(height: 26),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                splashFactory: NoSplash.splashFactory,
+                                backgroundColor:
+                                    const Color.fromRGBO(69, 160, 54, 100),
+                                minimumSize: const Size(200, 55),
+                                disabledBackgroundColor: Colors.transparent,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                              icon: const Icon(Icons.add),
+                              label: const Text(
+                                'Add service',
+                                style:
+                                    TextStyle(fontSize: 15, letterSpacing: 2),
+                              ),
+                              onPressed: () {
+                                FirebaseFirestore.instance
+                                    .collection('advertisement')
+                                    .doc(selectedValue.toString().toLowerCase())
+                                    .update({
+                                  selectedValue.toString().toLowerCase():
+                                      access.imageUrl
+                                });
+                                Navigator.pop(context);
+                              },
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  });
+                },
+              );
+            }),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
@@ -159,54 +316,49 @@ class _ProductsPageState extends State<ProductsPage> {
                                               documentSnapshot['prodtitle'],
                                         )));
                           },
-                          onLongPress: (){
+                          onLongPress: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text('Delete Item'),
+                                  content: const Text(
+                                      'Are you sure you want to delete this products?'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        FirebaseFirestore.instance
+                                            .collection('products')
+                                            .doc(documentSnapshot.id)
+                                            .collection('sellers')
+                                            .get()
+                                            .then((querySnapshot) {
+                                          querySnapshot.docs.forEach((doc) {
+                                            doc.reference.delete();
+                                          });
+                                        }).then((_) {
+                                          FirebaseFirestore.instance
+                                              .collection('products')
+                                              .doc(documentSnapshot.id)
+                                              .delete();
+                                        });
 
-                             showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: const Text('Delete Item'),
-                                content: const Text(
-                                    'Are you sure you want to delete this products?'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      FirebaseFirestore.instance
-                                  .collection('products')
-                                  .doc(documentSnapshot.id)
-                                  .collection('sellers')
-                                  .get()
-                                  .then((querySnapshot) {
-                                querySnapshot.docs.forEach((doc) {
-                                  doc.reference.delete();
-                                });
-                              }).then((_) {
-                                FirebaseFirestore.instance
-                                    .collection('products')
-                                    .doc(documentSnapshot.id)
-                                    .delete();
-                              });
-                                     
-
-                                      Navigator.pop(
-                                          context); // Close the dialog
-                                    },
-                                    child: const Text('Delete'),
-                                  ),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(
-                                          context); // Close the dialog
-                                    },
-                                    child: const Text('Cancel'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                            
-
-                             
+                                        Navigator.pop(
+                                            context); // Close the dialog
+                                      },
+                                      child: const Text('Delete'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(
+                                            context); // Close the dialog
+                                      },
+                                      child: const Text('Cancel'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                           },
                           child: ProdServiceTile(
                             image: documentSnapshot['prodimg'],
