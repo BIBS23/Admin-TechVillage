@@ -12,11 +12,20 @@ class NotificationPage extends StatefulWidget {
 }
 
 class _NotificationPageState extends State<NotificationPage> {
+  final TextEditingController grantcontroller = TextEditingController();
+  final TextEditingController expcontroller = TextEditingController();
+  final TextEditingController categorycontroller = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    grantcontroller.dispose();
+    expcontroller.dispose();
+    categorycontroller.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final TextEditingController grantcontroller = TextEditingController();
-    final TextEditingController expcontroller = TextEditingController();
-    final TextEditingController categorycontroller = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(62, 202, 59, 100),
@@ -27,37 +36,60 @@ class _NotificationPageState extends State<NotificationPage> {
         elevation: 0,
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance
-            .collection('grants')
-            .orderBy('timestamp', descending: true)
-            .snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(child: CupertinoActivityIndicator());
-          }
-          return ListView.builder(
-            itemCount: snapshot.data!.docs.length,
-            itemBuilder: (context, index) {
-              final DocumentSnapshot documentSnapshot =
-                  snapshot.data!.docs[index];
-              return GestureDetector(
-                onLongPress: () {
-                  final docid = documentSnapshot.id;
-                  FirebaseFirestore.instance
-                      .collection('grants')
-                      .doc(docid)
-                      .delete();
-                },
-                child: GrantTile(
-                  grant: documentSnapshot['grant'],
-                  exp: documentSnapshot['exp'],
-                  category: documentSnapshot['category'],
-                ),
-              );
-            },
-          );
-        },
-      ),
+          stream: FirebaseFirestore.instance
+              .collection('grants')
+              .orderBy('timestamp', descending: true)
+              .snapshots(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(child: CupertinoActivityIndicator());
+            }
+            return ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, index) {
+                  final DocumentSnapshot documentSnapshot =
+                      snapshot.data!.docs[index];
+                  return GestureDetector(
+                    onLongPress: () {
+                      final docid = documentSnapshot.id;
+
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text('Delete Item'),
+                            content: const Text(
+                                'Are you sure you want to delete this seller?'),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context); // Close the dialog
+                                },
+                                child: const Text('Delete'),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  FirebaseFirestore.instance
+                                      .collection('grants')
+                                      .doc(docid)
+                                      .delete();
+                                  Navigator.pop(context); // Close the dialog
+                                },
+                                child: const Text('Cancel'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    child: GrantTile(
+                      grant: documentSnapshot['grant'],
+                      exp: documentSnapshot['exp'],
+                      category: documentSnapshot['category'],
+                    ),
+                  );
+                });
+          }),
       floatingActionButton: FloatingActionButton(
           backgroundColor: const Color.fromRGBO(62, 202, 59, 100),
           shape:

@@ -50,7 +50,8 @@ class GrantTile extends StatelessWidget {
                     child: Center(
                       child: Text(
                         grant,
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.center,
+                      
                       ),
                     ),
                   ),

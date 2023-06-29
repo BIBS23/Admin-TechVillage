@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:techvillage_admin/Services/service_page.dart';
 import 'package:techvillage_admin/Utils/add_productdetails.dart';
 import 'package:techvillage_admin/Utils/add_servicedetails.dart';
-import 'package:techvillage_admin/Utils/products_bottomsheet.dart';
 import 'package:techvillage_admin/controller/add_to_fav.dart';
 
 class ProdServiceTile extends StatefulWidget {

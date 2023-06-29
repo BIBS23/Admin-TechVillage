@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:techvillage_admin/controller/access_controller.dart';
 import 'package:techvillage_admin/controller/add_to_fav.dart';
 import 'package:techvillage_admin/controller/login_controller.dart';
-import 'package:techvillage_admin/controller/notification.dart';
 import 'package:techvillage_admin/screens/login_screen.dart';
 import 'screens/nav.dart';
 import 'screens/splash_screen.dart';
@@ -15,9 +14,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   
-  // Initialize notification banner
-  NotificationBanner notificationBanner = NotificationBanner();
-  notificationBanner.initializeNotifications();
 
 
   runApp(const MyApp());
@@ -60,7 +56,6 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthController()),
         ChangeNotifierProvider(create: (_) => AccessStorage()),
-        ChangeNotifierProvider(create: (_) => NotificationBanner()),
         ChangeNotifierProvider(create: (_) => AddToFav()),
       ],
       child: MaterialApp(

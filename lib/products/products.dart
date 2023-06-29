@@ -1,11 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:provider/provider.dart';
 import 'package:techvillage_admin/Utils/products_bottomsheet.dart';
-import 'package:techvillage_admin/Utils/mytextfield.dart';
-import 'package:techvillage_admin/controller/access_controller.dart';
 import 'package:techvillage_admin/products/product_sellers_page.dart';
 import '../Utils/prod_service_tile.dart';
 
@@ -35,6 +31,7 @@ class _ProductsPageState extends State<ProductsPage> {
   void dispose() {
     super.dispose();
     _searchController.dispose();
+    prodcontroller.dispose();
   }
 
   void openKeyboard() {
