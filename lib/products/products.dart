@@ -119,9 +119,12 @@ class _ProductsPageState extends State<ProductsPage> {
                   },
                   icon: Icon(expand ? Icons.close : Icons.search)))
         ],
-        leading: IconButton(
-            icon: Text('Ads'),
-            onPressed: () {
+        leading: GestureDetector(
+            child: const SizedBox(
+              height: 40,
+              width: 40,
+              child: Center(child: Text('Ads',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),))),
+            onTap: () {
               showModalBottomSheet(
                 context: context,
                 shape: const RoundedRectangleBorder(
@@ -209,7 +212,7 @@ class _ProductsPageState extends State<ProductsPage> {
                             ),
                           ),
                           RadioListTile(
-                            title: Text('Advertisement 1'),
+                            title: const Text('Advertisement 1'),
                             value: 'ad1',
                             groupValue: selectedValue,
                             onChanged: (value) {
@@ -219,7 +222,7 @@ class _ProductsPageState extends State<ProductsPage> {
                             },
                           ),
                           RadioListTile(
-                            title: Text('Advertisement 2'),
+                            title: const Text('Advertisement 2'),
                             value: 'ad2',
                             groupValue: selectedValue,
                             onChanged: (value) {
@@ -229,7 +232,7 @@ class _ProductsPageState extends State<ProductsPage> {
                             },
                           ),
                           RadioListTile(
-                            title: Text('Advertisement 3'),
+                            title: const Text('Advertisement 3'),
                             value: 'ad3',
                             groupValue: selectedValue,
                             onChanged: (value) {
