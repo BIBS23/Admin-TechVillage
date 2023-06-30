@@ -121,9 +121,13 @@ class _ProductsPageState extends State<ProductsPage> {
         ],
         leading: GestureDetector(
             child: const SizedBox(
-              height: 40,
-              width: 40,
-              child: Center(child: Text('Ads',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),))),
+                height: 40,
+                width: 40,
+                child: Center(
+                    child: Text(
+                  'Ads',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                ))),
             onTap: () {
               showModalBottomSheet(
                 context: context,
@@ -257,7 +261,7 @@ class _ProductsPageState extends State<ProductsPage> {
                               ),
                               icon: const Icon(Icons.add),
                               label: const Text(
-                                'Add service',
+                                'Add Ads',
                                 style:
                                     TextStyle(fontSize: 15, letterSpacing: 2),
                               ),
