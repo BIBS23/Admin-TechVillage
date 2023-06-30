@@ -52,7 +52,7 @@ class _NotificationPageState extends State<NotificationPage> {
                       snapshot.data!.docs[index];
                   return GestureDetector(
                     onLongPress: () {
-                      final docid = documentSnapshot.id;
+                      String docid = documentSnapshot.id;
 
                       showDialog(
                         context: context,
@@ -64,17 +64,18 @@ class _NotificationPageState extends State<NotificationPage> {
                             actions: [
                               TextButton(
                                 onPressed: () {
-                                  Navigator.pop(context); // Close the dialog
+                                  FirebaseFirestore.instance
+                                      .collection('grants')
+                                      .doc(docid)
+                                      .delete();
+                                  Navigator.pop(context);
                                 },
                                 child: const Text('Delete'),
                               ),
                               TextButton(
                                 onPressed: () {
-                                  FirebaseFirestore.instance
-                                      .collection('grants')
-                                      .doc(docid)
-                                      .delete();
                                   Navigator.pop(context); // Close the dialog
+                                  // Close the dialog
                                 },
                                 child: const Text('Cancel'),
                               ),
